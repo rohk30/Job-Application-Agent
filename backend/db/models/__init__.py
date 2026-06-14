@@ -9,6 +9,7 @@ from .job_source import JobSource
 from .job_posting import JobPosting
 from .application import Application
 from .application_event import ApplicationEvent
+from .company_job_sources import CompanyJobSource
 
 __all__ = [
     "User",
@@ -22,4 +23,5 @@ __all__ = [
     "JobPosting",
     "Application",
     "ApplicationEvent",
+    "CompanyJobSource",
 ]
