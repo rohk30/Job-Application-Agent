@@ -7,6 +7,11 @@ from backend.db.session import SessionLocal
 def store_structured_data(resume_id, data):
     db = SessionLocal()
 
+    # Remove any existing structured records for this resume so re-uploads replace previous values
+    db.query(Skill).filter_by(resume_id=resume_id).delete(synchronize_session=False)
+    db.query(Experience).filter_by(resume_id=resume_id).delete(synchronize_session=False)
+    db.query(Education).filter_by(resume_id=resume_id).delete(synchronize_session=False)
+
     # Skills
     for skill in data.skills:
         db.add(Skill(resume_id=resume_id, skill_name=skill))
